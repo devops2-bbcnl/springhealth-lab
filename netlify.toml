@@ -1,60 +1,11 @@
 [build]
   command = "npm run build"
-  publish = ".next"
-  functions = ".next/functions"
+  publish = "out" # If using next export
+  # OR remove 'publish' entirely if using plugin
 
 [build.environment]
+  NODE_VERSION = "18.18.2"
   NEXT_TELEMETRY_DISABLED = "1"
-  NETLIFY_NEXT_PLUGIN_SKIP = "false"
 
-# Enable Next.js plugin for server-side rendering and image optimization
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-# Handle static assets
-[[redirects]]
-  from = "/_next/static/*"
-  to = "/_next/static/:splat"
-  status = 200
-  force = false
-
-# Handle image optimization
-[[redirects]]
-  from = "/_next/image"
-  to = "/.netlify/builders/_next/image"
-  status = 200
-  force = false
-
-# Handle all other paths for client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-
-# Security headers
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-
-# Cache static assets
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Cache images
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
-
-# Cache favicons
-[[headers]]
-  for = "/favicons/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, must-revalidate"
