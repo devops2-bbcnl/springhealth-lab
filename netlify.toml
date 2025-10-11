@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "out" # If using next export
-  # OR remove 'publish' entirely if using plugin
+  # 🚫 Do NOT set `publish` — let the plugin handle it
 
 [build.environment]
   NODE_VERSION = "18.18.2"
