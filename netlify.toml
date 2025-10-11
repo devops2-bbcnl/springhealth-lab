@@ -1,15 +1,38 @@
 [build]
   command = "npm run build"
   publish = ".next"
+  functions = ".next/functions"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
+  NODE_VERSION = "18.x"
 
+# Required for Next.js image optimization
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    enableFunctions = true
+    enableImageOptimization = true
 
-# Optional: only if you're serving a static site (no SSR/ISR)
+# Handle static assets and client-side routing
+[[redirects]]
+  from = "/_next/static/*"
+  to = "/_next/static/:splat"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
+
+# Cache static assets for better performance
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, must-revalidate"
