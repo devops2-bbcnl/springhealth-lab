@@ -5,13 +5,11 @@
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
+  NETLIFY_NEXT_PLUGIN_SKIP = "false"
 
-# Required for Next.js image optimization
+# Next.js plugin - no custom inputs needed
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    enableFunctions = true
-    enableImageOptimization = true
 
 # Handle static assets and client-side routing
 [[redirects]]
@@ -19,11 +17,17 @@
   to = "/_next/static/:splat"
   status = 200
 
+# Handle image optimization
+[[redirects]]
+  from = "/_next/image"
+  to = "/.netlify/builders/_next/image"
+  status = 200
+
+# Client-side routing fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
 # Cache static assets for better performance
 [[headers]]
