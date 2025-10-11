@@ -9,8 +9,9 @@ export interface TextareaProps
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, error, label, description, id, ...props }, ref) => {
-    const textareaId = id || React.useId();
+  ({ className, error, label, description, id: propId, ...props }, ref) => {
+    const generatedId = React.useId();
+    const textareaId = propId || generatedId;
     
     return (
       <div className="w-full">

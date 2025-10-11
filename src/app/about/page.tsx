@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { CheckCircleIcon, BeakerIcon, UserGroupIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
+import { BeakerIcon, UserGroupIcon, ShieldCheckIcon } from '@heroicons/react/24/outline';
 import aboutImage from '../../../public/images/lab-team.jpg';
 
 export default function AboutPage() {

@@ -16,6 +16,11 @@ export const mainNav: NavItem[] = [
     description: 'View our comprehensive range of medical tests and services',
   },
   {
+    title: 'Insurance Plans',
+    href: '/insurance',
+    description: 'Explore our affordable healthcare plans',
+  },
+  {
     title: 'About Us',
     href: '/about',
     description: 'Learn about our team and accreditations',
@@ -32,16 +37,8 @@ export const mainNav: NavItem[] = [
         title: 'FAQs',
         href: '/resources/faqs',
       },
-      {
-        title: 'Blog',
-        href: '/blog',
-      },
+      
     ],
-  },
-  {
-    title: 'Contact',
-    href: '/contact',
-    description: 'Get in touch with our team',
   },
 ];
 

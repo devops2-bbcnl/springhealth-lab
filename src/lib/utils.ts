@@ -73,10 +73,10 @@ export function truncate(str: string, length: number): string {
  * @param wait - Wait time in milliseconds
  * @returns Debounced function
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
-): (...args: Parameters<T>) => void {
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout;
   
   return function executedFunction(...args: Parameters<T>): void {

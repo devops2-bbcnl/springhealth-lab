@@ -9,8 +9,9 @@ export interface InputProps
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, error, label, description, id, ...props }, ref) => {
-    const inputId = id || React.useId();
+  ({ className, type, error, label, description, id: propId, ...props }, ref) => {
+    const generatedId = React.useId();
+    const inputId = propId || generatedId;
     
     return (
       <div className="w-full">

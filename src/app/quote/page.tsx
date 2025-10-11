@@ -132,7 +132,7 @@ export default function QuotePage() {
                   <div className="ml-3">
                     <h3 className="text-sm font-medium text-green-800">Request Submitted</h3>
                     <div className="mt-2 text-sm text-green-700">
-                      <p>Thank you for your request. We'll review your information and get back to you with a quote shortly.</p>
+                      <p>Thank you for your request. We&apos;ll review your information and get back to you with a quote shortly.</p>
                     </div>
                   </div>
                 </div>
@@ -275,7 +275,7 @@ export default function QuotePage() {
                   <div>
                     <h3 className="text-lg leading-6 font-medium text-gray-900">Select Tests</h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      Select the tests you're interested in. You can select multiple tests.
+                      Select the tests you&apos;re interested in. You can select multiple tests.
                     </p>
                   </div>
                   <div className="mt-6">

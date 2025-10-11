@@ -27,7 +27,6 @@ export const navLinks = [
   { name: 'Services', href: '/services' },
   { name: 'About Us', href: '/about' },
   { name: 'Patient Resources', href: '/resources' },
-  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ];
 

@@ -1,5 +1,5 @@
 import { BeakerIcon, HeartIcon, UserGroupIcon, ClockIcon, ShieldCheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 

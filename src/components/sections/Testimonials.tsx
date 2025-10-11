@@ -65,19 +65,22 @@ export function Testimonials({
               </div>
 
               <blockquote className="mt-4 flex-1">
-                <p className="text-gray-600">"{testimonial.content}"</p>
+                <p className="text-gray-600">&ldquo;{testimonial.content}&rdquo;</p>
               </blockquote>
 
               <div className="mt-6 flex items-center">
                 <div className="flex-shrink-0">
                   <Avatar>
-                    <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                    <AvatarFallback>
-                      {testimonial.name
-                        .split(' ')
-                        .map((n) => n[0])
-                        .join('')}
-                    </AvatarFallback>
+                    {testimonial.avatar ? (
+                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                    ) : (
+                      <AvatarFallback>
+                        {testimonial.name
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')}
+                      </AvatarFallback>
+                    )}
                   </Avatar>
                 </div>
                 <div className="ml-3">

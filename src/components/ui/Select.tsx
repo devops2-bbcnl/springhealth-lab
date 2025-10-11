@@ -10,8 +10,9 @@ export interface SelectProps
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, options, error, label, description, id, ...props }, ref) => {
-    const selectId = id || React.useId();
+  ({ className, options, error, label, description, id: propId, ...props }, ref) => {
+    const generatedId = React.useId();
+    const selectId = propId || generatedId;
     
     return (
       <div className="w-full">

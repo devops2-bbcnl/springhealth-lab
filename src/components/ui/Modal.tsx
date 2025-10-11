@@ -14,7 +14,6 @@ export interface ModalProps {
   showCloseButton?: boolean;
   className?: string;
   overlayClassName?: string;
-  contentClassName?: string;
   headerClassName?: string;
   bodyClassName?: string;
   footer?: React.ReactNode;
@@ -44,7 +43,6 @@ const Modal: React.FC<ModalProps> = ({
   showCloseButton = true,
   className,
   overlayClassName,
-  contentClassName,
   headerClassName,
   bodyClassName,
   footer,
