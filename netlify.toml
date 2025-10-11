@@ -1,7 +1,6 @@
 [build]
   command = "npm run build"
   publish = ".next"
-  functions = ".next/functions"
 
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
@@ -10,19 +9,8 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
+# Optional: only if you're serving a static site (no SSR/ISR)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Enable required features for Next.js
-[functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["@netlify/plugin-nextjs"]
-
-# Required for Next.js ISR (Incremental Static Regeneration)
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-  [plugins.inputs]
-    enableFunctions = true
-    enableISR = true
