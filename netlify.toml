@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  functions = ".next/functions"
+
+[build.environment]
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_VERSION = "18.x"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Enable required features for Next.js
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["@netlify/plugin-nextjs"]
+
+# Required for Next.js ISR (Incremental Static Regeneration)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+  [plugins.inputs]
+    enableFunctions = true
+    enableISR = true
