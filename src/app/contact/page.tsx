@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import {
 	CheckCircleIcon,
 	MapPinIcon,
@@ -87,16 +88,29 @@ export default function ContactPage() {
 	return (
 		<div className="bg-white">
 			{/* Hero Section */}
-			<div className="bg-blue-700">
-				<div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-					<h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-						Contact Us
-					</h1>
-					<p className="mt-2 text-lg text-blue-100">
-						We&apos;re here to help and answer any questions you might have.
-					</p>
-				</div>
-			</div>
+			<div className="relative bg-blue-700">
+  {/* Background Image */}
+  <div className="absolute inset-0 w-full h-full">
+    <Image
+      src="/images/contact-us.jpg"
+      alt="Contact us"
+      fill
+      className="object-cover"
+      priority
+    />
+    <div className="absolute inset-0 bg-blue-900/70" />
+  </div>
+  
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+    <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+      Contact Us
+    </h1>
+    <p className="mt-2 text-lg text-blue-100">
+      We&apos;re here to help and answer any questions you might have.
+    </p>
+  </div>
+</div>
 
 			{/* Contact Section */}
 			<div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">

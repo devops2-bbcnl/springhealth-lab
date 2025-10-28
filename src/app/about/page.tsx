@@ -7,18 +7,28 @@ export default function AboutPage() {
     <div className="bg-white">
       {/* Hero Section */}
       <div className="relative bg-blue-700">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-blue-700/80 mix-blend-multiply" />
-        </div>
-        <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            About Our Laboratory
-          </h1>
-          <p className="mt-6 max-w-3xl text-xl text-blue-100">
-            Committed to excellence in diagnostic testing and patient care through innovation and expertise.
-          </p>
-        </div>
-      </div>
+  {/* Background Image */}
+  <div className="absolute inset-0 w-full h-full">
+    <Image
+      src="/images/about-us.jpg"
+      alt="About our laboratory"
+      fill
+      className="object-cover"
+      priority
+    />
+    <div className="absolute inset-0 bg-blue-900/70" />
+  </div>
+  
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+    <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+      About Our Laboratory
+    </h1>
+    <p className="mt-6 max-w-3xl text-xl text-blue-100">
+      Committed to excellence in diagnostic testing and patient care through innovation and expertise.
+    </p>
+  </div>
+</div>
 
       {/* Our Story */}
       <div className="py-16 bg-white overflow-hidden lg:py-24">

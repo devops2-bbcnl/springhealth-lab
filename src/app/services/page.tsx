@@ -1,4 +1,8 @@
 import { BeakerIcon, HeartIcon, UserGroupIcon, ShieldCheckIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+
+// Import the image with the correct path
+const labTeamImage = '/images/our-services.jpg';
 
 const services = [
   {
@@ -105,16 +109,31 @@ export default function ServicesPage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="bg-blue-700">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-            Our Services
-          </h1>
-          <p className="mt-2 text-lg text-blue-100">
-            Comprehensive laboratory testing services for accurate diagnosis and better healthcare outcomes.
-          </p>
-        </div>
-      </div>
+<div className="relative bg-white">
+  {/* Background Image */}
+  <div className="absolute inset-0 w-full h-full overflow-hidden">
+    <Image
+      src={labTeamImage}
+      alt="Professional laboratory team"
+      fill
+      className="object-cover"
+      priority
+    />
+    <div className="absolute inset-0 bg-blue-900/30" /> {/* Subtle overlay */}
+  </div>
+  
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+    <div className="text-center">
+      <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+        Our Services
+      </h1>
+      <p className="mt-4 text-xl text-blue-100 max-w-3xl mx-auto">
+        Comprehensive laboratory testing services for accurate diagnosis and better healthcare outcomes.
+      </p>
+    </div>
+  </div>
+</div>
 
       {/* Main Services */}
       <div className="py-12 bg-white">

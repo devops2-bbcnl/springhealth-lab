@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const testOptions = [
@@ -108,8 +109,21 @@ export default function QuotePage() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="bg-blue-700">
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div className="relative bg-blue-700 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/images/quote.jpg"
+            alt="Laboratory equipment"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-blue-900/70" />
+        </div>
+        
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
             Get a Quote
           </h1>

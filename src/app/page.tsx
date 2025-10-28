@@ -1,7 +1,14 @@
+'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircleIcon, ClockIcon, ShieldCheckIcon, BeakerIcon } from '@heroicons/react/24/outline';
-import heroImage from '../../public/images/lab-staff.jpg'
+
+const backgroundImages = [
+  '/images/landing-background.jpg',
+  '/images/landing-background2.jpg',
+  '/images/landing-background3.jpg'
+];
 
 const features = [
   {
@@ -27,57 +34,62 @@ const features = [
 ];
 
 export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <div className="relative bg-blue-700 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-blue-700 sm:pb-16 md:pb-20 lg:w-1/2 lg:pb-28 xl:pb-32">
-            <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-              <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
-                  <span className="block">Advanced Medical</span>
-                  <span className="block text-blue-200">Laboratory Services</span>
-                </h1>
-                <p className="mt-3 text-base text-blue-100 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                  Accurate, reliable, and timely diagnostic testing for better healthcare outcomes. 
-                  Our certified laboratory provides comprehensive testing services with fast results.
-                </p>
-                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                  <div className="rounded-md shadow">
-                    <Link
-                      href="/book"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10"
-                    >
-                      Book an Appointment
-                    </Link>
-                  </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3">
-                    <Link
-                      href="/services"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 bg-opacity-60 hover:bg-opacity-70 md:py-4 md:text-lg md:px-10"
-                    >
-                      View Our Services
-                    </Link>
-                  </div>
-                </div>
+    <div className="relative min-h-screen bg-transparent">
+      {/* Fixed Background Image */}
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src={backgroundImages[currentImageIndex]}
+          alt="Medical laboratory background"
+          fill
+          className="object-cover transition-opacity duration-1000"
+          priority
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      
+      {/* Page Content */}
+      <div className="relative">
+        {/* Hero Section */}
+        <section className="min-h-screen flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-4xl text-white pt-20">
+              <h1 className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl">
+                <span className="block">Precision In Every Test,</span>
+                <span className="block text-blue-200">Care In Every Result</span>
+              </h1>
+              <p className="mt-3 text-base text-blue-100 sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
+                Accurate, reliable, and timely diagnostic testing for better healthcare outcomes. 
+                Our certified laboratory provides comprehensive testing services with fast results.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <Link
+                  href="/book"
+                  className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 text-center md:py-4 md:text-lg md:px-10 transition-colors duration-200"
+                >
+                  Book an Appointment
+                </Link>
+                <Link
+                  href="/services"
+                  className="px-8 py-3 border border-white text-base font-medium rounded-md text-white bg-blue-600/80 hover:bg-blue-700/90 text-center md:py-4 md:text-lg md:px-10 transition-colors duration-200"
+                >
+                  View Our Services
+                </Link>
               </div>
-            </main>
+            </div>
           </div>
-        </div>
-        <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 h-full overflow-hidden">
-          <div className="relative h-full w-full">
-            <div className="absolute inset-0 bg-blue-700/40 z-10 mix-blend-multiply" />
-            <Image
-              src={heroImage}
-              alt="Medical laboratory professional working"
-              fill
-              sizes="(max-width: 1024px) 0vw, 50vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
+        </section>
       </div>
 
       {/* Features Section */}

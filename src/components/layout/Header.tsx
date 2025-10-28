@@ -9,18 +9,18 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white shadow-sm">
+    <header className="relative z-50 bg-transparent transition-all duration-300">
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="flex w-full items-center justify-between border-b border-blue-500 py-6 lg:border-none">
+        <div className="flex w-full items-center justify-between py-6">
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
               <Image 
                 src="/images/logo.png" 
                 alt="SpringQuest Health Management Ltd Logo" 
-                width={200} // Adjust these values based on your logo's aspect ratio
+                width={250} // Adjust these values based on your logo's aspect ratio
                 height={64}  // 64px height to match your h-16 class
-                className="h-16 w-auto"
+                className="h-24 w-auto"
                 priority
               />
             </Link>
@@ -32,7 +32,7 @@ export function Header() {
               <div key={item.href} className="relative group">
                 <Link
                   href={item.href}
-                  className="text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+                  className="text-base font-medium text-gray-400 hover:text-blue-600 transition-colors duration-200"
                 >
                   {item.title}
                 </Link>
